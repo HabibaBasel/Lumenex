@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:luminixdx_web_ui_en/screens/ai_playground.dart';
+import 'package:luminixdx_web_ui_en/widgets/Final_CTA_Section.dart';
+import 'package:luminixdx_web_ui_en/widgets/Why_now_section.dart';
 import '../widgets/top_nav_bar.dart';
 import '../widgets/hero_section.dart';
 import '../widgets/problem_section.dart';
@@ -19,9 +21,11 @@ class _LandingPageState extends State<LandingPage> {
   final ScrollController _scrollController = ScrollController();
   final Map<String, GlobalKey> _sectionKeys = {
     'home': GlobalKey(),
+    'Why Now': GlobalKey(),
     'problem': GlobalKey(),
     'solution': GlobalKey(),
     'audience': GlobalKey(),
+    'cta': GlobalKey(),
     'partners': GlobalKey(),
     'contact': GlobalKey(),
   };
@@ -57,6 +61,18 @@ class _LandingPageState extends State<LandingPage> {
       Navigator.of(context).push(
         MaterialPageRoute(builder: (_) => const AIPlaygroundScreen()),
       );
+      return;
+    }
+
+    if (section == 'contact') {
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+      setState(() {
+        _activeSection = section;
+      });
       return;
     }
 
@@ -97,12 +113,15 @@ class _LandingPageState extends State<LandingPage> {
             children: [
               Container(key: _sectionKeys['home'], child: const HeroSection()),
               Container(
+                  key: _sectionKeys['Why Now'], child: const WhyNowSection()),
+              Container(
                   key: _sectionKeys['problem'], child: const ProblemSection()),
               Container(
                   key: _sectionKeys['solution'],
                   child: const SolutionSection()),
               Container(
                   key: _sectionKeys['audience'], child: AudienceSection()),
+              Container(key: _sectionKeys['cta'], child: FinalCTASection()),
               Container(
                   key: _sectionKeys['partners'],
                   child: const PartnersSection()),

@@ -52,75 +52,121 @@ class _ContactSectionState extends State<ContactSection>
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     final inputDecoration = InputDecoration(
       filled: true,
       fillColor: Colors.white,
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
     );
 
+    final isWide = screenWidth > 900;
+
     return SectionWrapper(
-      backgroundColor: const Color(0xFFF0F6F4),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            'Contact Us',
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: const Color(0xFF054753),
-                ),
-          ),
-          const SizedBox(height: 16),
-          Text(
-            'We’d love to hear from you. Leave your message and we’ll get back to you shortly.',
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Colors.black87,
-                ),
-          ),
-          const SizedBox(height: 32),
-          Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 600),
-              child: SlideTransition(
-                position: _slideAnimation,
-                child: FadeTransition(
-                  opacity: _fadeAnimation,
-                  child: Column(
-                    children: [
-                      TextField(
-                        decoration:
-                            inputDecoration.copyWith(hintText: 'Full Name'),
+      backgroundColor: Colors.white,
+      child: isWide
+          ? Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(child: _buildForm(inputDecoration)),
+                const SizedBox(width: 40),
+                Expanded(
+                  child: Center(
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: Image.asset(
+                        'assets/IMG-20250813-WA0071.jpg',
+                        fit: BoxFit.contain,
                       ),
-                      const SizedBox(height: 12),
-                      TextField(
-                        decoration:
-                            inputDecoration.copyWith(hintText: 'Email Address'),
-                      ),
-                      const SizedBox(height: 12),
-                      TextField(
-                        maxLines: 5,
-                        decoration:
-                            inputDecoration.copyWith(hintText: 'Your Message'),
-                      ),
-                      const SizedBox(height: 20),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF2D9E98),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 40, vertical: 16),
-                        ),
-                        child: const Text('Send Message'),
-                      ),
-                    ],
+                    ),
                   ),
+                ),
+              ],
+            )
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _buildForm(inputDecoration),
+                const SizedBox(height: 30),
+                AspectRatio(
+                  aspectRatio: 1,
+                  child: Image.asset(
+                    'assets/IMG-20250813-WA0071.jpg',
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              ],
+            ),
+    );
+  }
+
+  Widget _buildForm(InputDecoration inputDecoration) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          'Contact Us',
+          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: const Color(0xFF054753),
+              ),
+        ),
+        const SizedBox(height: 16),
+        Text(
+          'We’d love to hear from you. Leave your message and we’ll get back to you shortly.',
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Colors.black87,
+              ),
+        ),
+        const SizedBox(height: 32),
+        Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 600),
+            child: SlideTransition(
+              position: _slideAnimation,
+              child: FadeTransition(
+                opacity: _fadeAnimation,
+                child: Column(
+                  children: [
+                    TextField(
+                      decoration:
+                          inputDecoration.copyWith(hintText: 'Full Name'),
+                    ),
+                    const SizedBox(height: 12),
+                    TextField(
+                      decoration:
+                          inputDecoration.copyWith(hintText: 'Email Address'),
+                    ),
+                    const SizedBox(height: 12),
+                    TextField(
+                      maxLines: 5,
+                      decoration:
+                          inputDecoration.copyWith(hintText: 'Your Message'),
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF2D9E98),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 40, vertical: 16),
+                      ),
+                      child: const Text(
+                        'Send Message',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }

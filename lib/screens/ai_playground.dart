@@ -368,7 +368,7 @@ class _AIPlaygroundScreenState extends State<AIPlaygroundScreen> {
                             value: _progress / 100,
                             minHeight: 6,
                             backgroundColor:
-                                colors.surfaceVariant.withOpacity(0.3),
+                                colors.surfaceContainerHighest.withOpacity(0.3),
                             valueColor: const AlwaysStoppedAnimation<Color>(
                                 Color(0xFF2D9E98)),
                           ),
@@ -423,7 +423,7 @@ class _AIPlaygroundScreenState extends State<AIPlaygroundScreen> {
             fontSize: 14,
           ),
           filled: true,
-          fillColor: colors.surfaceVariant.withOpacity(0.15),
+          fillColor: colors.surfaceContainerHighest.withOpacity(0.15),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -502,7 +502,7 @@ class _AIPlaygroundScreenState extends State<AIPlaygroundScreen> {
         ),
       ),
       avatar: Icon(icon, size: 20, color: colors.primary),
-      backgroundColor: colors.surfaceVariant.withOpacity(0.3),
+      backgroundColor: colors.surfaceContainerHighest.withOpacity(0.3),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
     );

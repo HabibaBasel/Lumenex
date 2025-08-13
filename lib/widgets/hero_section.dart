@@ -10,49 +10,54 @@ class HeroSection extends StatelessWidget {
     final isWide = screenWidth > 900;
 
     return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Color(0xFF054753),
-            Color(0xFF228483),
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+      color: Colors.white,
+      child: Container(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFF054753),
+              Color(0xFF228483),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(90),
+            bottomLeft: Radius.circular(90),
+          ),
         ),
-        borderRadius: BorderRadius.only(
-          bottomRight: Radius.circular(120),
+        padding: EdgeInsets.only(
+          top: isWide ? 120 : 100,
+          bottom: isWide ? 100 : 100,
+          left: 30,
+          right: 30,
         ),
-      ),
-      padding: EdgeInsets.only(
-        top: isWide ? 170 : 100,
-        bottom: isWide ? 160 : 100,
-        left: 24,
-        right: 24,
-      ),
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1200),
-          child: isWide
-              ? Row(
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: _buildTextContent(context, isWide),
-                    ),
-                    const SizedBox(width: 40),
-                    Expanded(
-                      flex: 2,
-                      child: _buildImage(isWide),
-                    ),
-                  ],
-                )
-              : Column(
-                  children: [
-                    _buildTextContent(context, isWide),
-                    const SizedBox(height: 24),
-                    _buildImage(isWide),
-                  ],
-                ),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 1200),
+            child: isWide
+                ? Row(
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: _buildTextContent(context, isWide),
+                      ),
+                      const SizedBox(width: 40),
+                      Expanded(
+                        flex: 2,
+                        child: _buildImage(isWide),
+                      ),
+                    ],
+                  )
+                : Column(
+                    children: [
+                      _buildTextContent(context, isWide),
+                      const SizedBox(height: 24),
+                      _buildImage(isWide),
+                    ],
+                  ),
+          ),
         ),
       ),
     );
@@ -64,7 +69,7 @@ class HeroSection extends StatelessWidget {
           isWide ? CrossAxisAlignment.start : CrossAxisAlignment.center,
       children: [
         Text(
-          'Smarter\nCardiac Diagnosis',
+          'Hear the Unheard\nDiagnose with Certainty',
           textAlign: isWide ? TextAlign.left : TextAlign.center,
           style: Theme.of(context).textTheme.displayMedium?.copyWith(
                 fontWeight: FontWeight.bold,
@@ -74,7 +79,7 @@ class HeroSection extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         Text(
-          'Meet LumenexHx — the first AI-powered auscultation and diagnostics platform in Egypt. Analyze heart sounds, medical images, and patient data with confidence and clarity.',
+          'Lumenix is an AI-powered diagnostic ecosystem transforming cardiorespiratory care. We turn sound into life-saving data.',
           textAlign: isWide ? TextAlign.left : TextAlign.center,
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 color: Colors.white.withOpacity(0.9),
@@ -95,7 +100,7 @@ class HeroSection extends StatelessWidget {
             textStyle:
                 const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
-          child: const Text('Try the Interactive Demo Now'),
+          child: const Text('Request a Demo'),
         ),
       ],
     );
@@ -103,11 +108,8 @@ class HeroSection extends StatelessWidget {
 
   Widget _buildImage(bool isWide) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(16),
       child: Image.asset(
-        'assets/doc.jpg',
-        height: isWide ? 340 : 240,
-        fit: BoxFit.cover,
+        'assets/device.png',
       ),
     );
   }

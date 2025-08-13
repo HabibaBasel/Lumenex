@@ -52,6 +52,15 @@ class _TopNavBarState extends State<TopNavBar> {
       return;
     }
 
+    if (section == "contact") {
+      widget.scrollController.animateTo(
+        widget.scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+      return;
+    }
+
     final targetOffset = widget.sectionOffsets[section];
     if (targetOffset != null) {
       widget.scrollController.animateTo(
@@ -98,7 +107,7 @@ class _TopNavBarState extends State<TopNavBar> {
             colors: [
               Color(0xFF054753),
               Color(0xff126269),
-              Color(0xFF1F7E7F),
+              Color(0xFF1D7A7B),
             ],
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
@@ -110,13 +119,16 @@ class _TopNavBarState extends State<TopNavBar> {
       titleSpacing: 20,
       title: Row(
         children: [
-          Image.asset('assets/logo.jpg', height: 40),
+          Image.asset(
+            'assets/logoooo.png',
+            height: 40,
+          ),
           const SizedBox(width: 12),
           const Text(
             'Lumenex',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 22,
+              fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
           ),

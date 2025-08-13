@@ -17,7 +17,7 @@ class ProblemSection extends StatelessWidget {
                 isWide ? CrossAxisAlignment.start : CrossAxisAlignment.center,
             children: [
               Text(
-                'The Diagnostic Gap',
+                'The Diagnostic Gap is Costing Lives and Fortunes.',
                 textAlign: isWide ? TextAlign.left : TextAlign.center,
                 style: Theme.of(context).textTheme.displaySmall?.copyWith(
                       fontWeight: FontWeight.bold,
@@ -27,7 +27,7 @@ class ProblemSection extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Container(
-                width: 75,
+                width: 90,
                 height: 4,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
@@ -40,15 +40,22 @@ class ProblemSection extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),
-              const SizedBox(height: 20),
-              Text(
-                'In Egypt and similar healthcare systems, early diagnosis of cardiac conditions is often missed — not because of negligence, but due to the lack of accessible, intelligent diagnostic tools.\n\n'
-                'Traditional auscultation is limited, and visual/audio interpretation varies from doctor to doctor. This leads to misdiagnosis, delayed treatment, and avoidable complications.',
-                textAlign: isWide ? TextAlign.left : TextAlign.center,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: Colors.black87,
-                      height: 1.8,
-                    ),
+              const SizedBox(height: 28),
+              _buildSentence(
+                context,
+                'For 200 years, clinicians have relied on subjective listening, leading to critical missed diagnoses in up to 40% of complex cases.',
+              ),
+              _buildSentence(
+                context,
+                'This uncertainty forces the overuse of expensive secondary tests, wasting billions and delaying patient care.',
+              ),
+              _buildSentence(
+                context,
+                'Doctors are burned out, and patients are at risk.',
+              ),
+              _buildSentence(
+                context,
+                'It\'s time for a smarter way to listen.',
               ),
             ],
           );
@@ -67,7 +74,7 @@ class ProblemSection extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: Image.asset(
-                'assets/patient.jpg',
+                'assets/doctor3.jpg',
                 height: isWide ? 320 : 260,
                 fit: BoxFit.cover,
               ),
@@ -91,6 +98,20 @@ class ProblemSection extends StatelessWidget {
                   ],
                 );
         },
+      ),
+    );
+  }
+
+  Widget _buildSentence(BuildContext context, String text) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: Text(
+        text,
+        textAlign: TextAlign.start,
+        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              color: Colors.black87,
+              height: 1.6,
+            ),
       ),
     );
   }

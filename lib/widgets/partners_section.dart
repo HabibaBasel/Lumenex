@@ -14,7 +14,7 @@ class PartnersSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SectionWrapper(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

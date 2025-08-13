@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'section_wrapper.dart';
 
 class SolutionSection extends StatelessWidget {
   const SolutionSection({super.key});
+
+  Widget _buildParagraph(String text, bool isWide) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20),
+      child: Text(
+        text,
+        textAlign: isWide ? TextAlign.left : TextAlign.center,
+        style: const TextStyle(
+          fontSize: 17,
+          height: 1.7,
+          color: Colors.black87,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,84 +25,72 @@ class SolutionSection extends StatelessWidget {
       backgroundColor: Colors.white,
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final isWide = constraints.maxWidth > 900;
+          final isWide = constraints.maxWidth > 1100;
 
-          Widget titleAndText = Column(
+          Widget textContent = Column(
             crossAxisAlignment:
                 isWide ? CrossAxisAlignment.start : CrossAxisAlignment.center,
             children: [
               Text(
-                'Our Integrated Solution',
+                'The Lumenix Ecosystem: An End-to-End Intelligent Diagnostic Platform.',
                 textAlign: isWide ? TextAlign.left : TextAlign.center,
                 style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w800,
                       color: const Color(0xFF054753),
-                      letterSpacing: 1.2,
+                      letterSpacing: 1.3,
+                      height: 1.3,
                     ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 14),
               Container(
-                width: 75,
-                height: 4,
+                width: 90,
+                height: 5,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [
                       Color(0xFF054753),
                       Color(0xFF2D9E98),
-                      Colors.white
                     ],
                   ),
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(6),
                 ),
               ),
-              const SizedBox(height: 20),
-              Text(
-                'LumenexHx is more than a tool — it’s a complete diagnostic ecosystem.\n'
-                'Designed to support clinicians in making faster, smarter, and more accurate decisions at the point of care.',
-                textAlign: isWide ? TextAlign.left : TextAlign.center,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: Colors.black87,
-                      height: 1.8,
-                    ),
+              const SizedBox(height: 28),
+              _buildParagraph(
+                "Capture with Precision: Our proprietary Stetho™ Pro device captures crystal-clear, high-fidelity cardiorespiratory sounds, engineered to eliminate ambient noise.",
+                isWide,
               ),
-              const SizedBox(height: 24),
-              const BulletItem(
-                icon: FontAwesomeIcons.stethoscope,
-                iconColor: Color(0xFF2D9E98),
-                text:
-                    'Stetho™ Pro – Smart stethoscope with real-time AI support',
+              _buildParagraph(
+                "Analyze with Superhuman Intelligence: Our Hybrid AI Platform processes this data in seconds. A proprietary Audio-Core AI performs a specialized acoustic analysis, while a Gemini-powered engine correlates it with the patient's full medical context.",
+                isWide,
               ),
-              const BulletItem(
-                icon: Icons.psychology_alt,
-                iconColor: Color(0xFF2D9E98),
-                text:
-                    'Lumen™ AI – Multi-input engine for auscultation, images, and patient data',
+              _buildParagraph(
+                "Act with Confidence: The platform delivers clear, actionable insights—not just data—to the clinician's fingertips, supporting faster, more accurate diagnoses and treatment decisions.",
+                isWide,
               ),
-              const BulletItem(
-                icon: Icons.home_filled,
-                iconColor: Color(0xFF2D9E98),
-                text:
-                    'Lumen™ Home – Our future remote diagnostic hub for home use',
+              _buildParagraph(
+                "Integrate Seamlessly: Lumenix is built to integrate flawlessly with your existing Hospital Information Systems (HIS) and Electronic Health Records (EHR), enhancing your workflow, not disrupting it.",
+                isWide,
               ),
             ],
           );
 
           Widget imageContent = Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.08),
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
+                  color: Colors.black.withOpacity(0.06),
+                  blurRadius: 14,
+                  offset: const Offset(0, 6),
                 ),
               ],
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(20),
               child: Image.asset(
-                'assets/doctor.jpg',
-                height: isWide ? 320 : 240,
+                'assets/IMG-20250813-WA0072.jpg',
+                width: double.infinity,
                 fit: BoxFit.cover,
               ),
             ),
@@ -98,54 +100,19 @@ class SolutionSection extends StatelessWidget {
               ? Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Expanded(flex: 3, child: titleAndText),
+                    Expanded(flex: 2, child: textContent),
                     const SizedBox(width: 50),
-                    Expanded(flex: 2, child: imageContent),
+                    Expanded(flex: 3, child: imageContent),
                   ],
                 )
               : Column(
                   children: [
-                    titleAndText,
+                    textContent,
                     const SizedBox(height: 30),
                     imageContent,
                   ],
                 );
         },
-      ),
-    );
-  }
-}
-
-class BulletItem extends StatelessWidget {
-  final IconData icon;
-  final Color iconColor;
-  final String text;
-  const BulletItem({
-    super.key,
-    required this.icon,
-    required this.iconColor,
-    required this.text,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(icon, color: iconColor, size: 22),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Text(
-              text,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Colors.black87,
-                    height: 1.6,
-                  ),
-            ),
-          ),
-        ],
       ),
     );
   }
