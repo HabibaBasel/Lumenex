@@ -21,4 +21,4 @@ https://youtu.be/hizODaglTQc?si=xbeFA-vbSrK7RrDu
 
 For the presentation and the video explaining our team's project and the project idea please refer to this URL
 
-https://drive.google.com/file/d/1AneyUcL_3Y9XUh8oLMX-dcdUcVmgol1o/view?usp=sharing
+https://drive.google.com/drive/u/0/folders/1KJyHE1Giw2UJfQa9W2mRZLBLbKUXKv8x
