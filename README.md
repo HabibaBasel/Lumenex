@@ -19,6 +19,6 @@ for detailed explanation of the project's idea and explanation please refer to t
 
 https://youtu.be/hizODaglTQc?si=xbeFA-vbSrK7RrDu
 
-For the presentation explanting the team's project and project idea please refer to this URL
+For the presentation and the video explaining our team's project and the project idea please refer to this URL
 
 https://drive.google.com/file/d/1AneyUcL_3Y9XUh8oLMX-dcdUcVmgol1o/view?usp=sharing
